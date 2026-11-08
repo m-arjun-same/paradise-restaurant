@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Cart — Paradise Restaurant | Your Order</title>
+<meta name="description" content="Your Paradise order — review your biryanis and kebabs, choose pickup or delivery, and place the order.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%230c0906' stroke='%23d9a441' stroke-width='2'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='34' font-weight='700' fill='%23d9a441' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+</head>
+<body class="site">
+
+<header class="sitenav">
+  <a class="brand" href="index.html">
+    <span class="brand-mark">P</span>
+    <span class="brand-text"><span class="brand-name">PARADISE</span><span class="brand-sub">Since 1953 · Secunderabad</span></span>
+  </a>
+  <nav class="navlinks">
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="order.html">Order</a>
+    <a class="cart-link active" href="cart.html" id="navCart">Cart <span class="cart-badge" data-cart-count>0</span></a>
+  </nav>
+</header>
+
+<section class="sec" style="padding-top:clamp(36px,6vh,56px)">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Your Order</p>
+      <h1 class="sec-title" style="font-family:var(--serif)">The cart</h1>
+    </div>
+
+    <div id="cartMain">
+      <div class="cart-layout">
+        <div class="panel">
+          <h2>Your items</h2>
+          <div id="cartLines"></div>
+          <p class="cart-empty-page" id="cartEmptyPage">Your plate is empty.<br><a href="shop.html" style="color:var(--gold);font-weight:700">Browse the shop</a> or <a href="order.html" style="color:var(--gold);font-weight:700">open the ordering stage</a>.</p>
+        </div>
+
+        <div class="panel">
+          <h2>Checkout</h2>
+          <div class="mode-toggle" role="group" aria-label="Pickup or delivery">
+            <button id="modePickup" class="active">Pickup</button>
+            <button id="modeDelivery">Delivery</button>
+          </div>
+          <label class="field"><span>Your name</span><input id="custName" type="text" placeholder="Name for the order" autocomplete="name"></label>
+          <div id="deliveryFields" hidden>
+            <label class="field"><span>Delivery address</span><textarea id="custAddress" rows="3" placeholder="House no, street, area, landmark"></textarea></label>
+          </div>
+          <div class="tot-row"><span>Subtotal</span><span id="totSubtotal">₹0</span></div>
+          <div class="tot-row" id="deliveryRow" hidden><span>Delivery</span><span>₹40</span></div>
+          <div class="tot-row grand"><span>Total</span><span id="totGrand">₹0</span></div>
+          <button class="btn btn-gold place-btn" id="placeOrder">Place Order</button>
+          <p class="note-line">Pickup from Paradise, Secunderabad · Orders close 30 minutes before pickup.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="confirmMain" hidden>
+      <div class="panel" style="max-width:620px;margin:0 auto;text-align:left">
+        <div class="confirm-seal">✓</div>
+        <h2 style="font-family:var(--serif);margin:0 0 6px;font-size:28px">Order confirmed</h2>
+        <p style="color:var(--muted);margin:0">Thank you — the handi is on the dum.</p>
+        <div class="confirm-card">
+          <div class="confirm-row"><span>Receipt no.</span><strong id="cReceipt">PRD-000000</strong></div>
+          <div class="confirm-row"><span id="cWhenLabel">Pickup time</span><strong id="cWhen">—</strong></div>
+          <div class="confirm-row"><span>Mode</span><strong id="cMode">Pickup</strong></div>
+          <div class="confirm-row"><span>Name</span><strong id="cName">—</strong></div>
+          <div class="confirm-row"><span>Total</span><strong id="cTotal">₹0</strong></div>
+        </div>
+        <div id="cItems" style="color:var(--muted);line-height:1.8"></div>
+        <p class="note-line">Orders close 30 minutes before pickup.</p>
+        <a class="btn btn-gold" href="shop.html" style="margin-top:10px">Order More →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="sitefoot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="index.html" style="text-decoration:none;display:flex;align-items:center;gap:11px">
+          <span class="brand-mark">P</span>
+          <span class="brand-text"><span class="brand-name">PARADISE</span><span class="brand-sub">Since 1953 · Secunderabad</span></span>
+        </a>
+        <p>The world's favourite Hyderabadi dum biryani — from a small cinema café in 1953 to a legend of Hyderabad.</p>
+      </div>
+      <nav class="foot-links">
+        <a href="index.html">Home</a><a href="shop.html">Shop</a><a href="order.html">Order</a><a href="cart.html">Cart</a>
+      </nav>
+    </div>
+    <div class="foot-base"><span>Paradise · Secunderabad</span><span>·</span><span>Since 1953</span><span>·</span><span>Open 11 AM – 11 PM</span><span>·</span><span>World's Favourite Biryani</span></div>
+  </div>
+</footer>
+
+<script src="cart.js"></script>
+<script src="cartpage.js"></script>
+</body>
+</html>

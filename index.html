@@ -4,146 +4,133 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Paradise Restaurant — World's Favourite Biryani | A Legend Since 1953</title>
-<meta name="description" content="Paradise, Secunderabad — a legend since 1953. Order the world's favourite Hyderabadi dum biryani.">
+<meta name="description" content="Paradise, Secunderabad — a legend since 1953. The world's favourite Hyderabadi dum biryani. Order online, browse the shop.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%230c0906' stroke='%23d9a441' stroke-width='2'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='34' font-weight='700' fill='%23d9a441' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="site.css">
 </head>
-<body>
+<body class="site">
 
-<div class="loader" id="loader"><div class="loader-mark">P</div></div>
-
-<div class="bg-word" aria-hidden="true">PARADISE</div>
-<div class="bg-glow" aria-hidden="true"></div>
-
-<header class="topbar">
-  <div class="brand">
-    <div class="brand-mark">P</div>
-    <div class="brand-text">
-      <span class="brand-name">PARADISE</span>
-      <span class="brand-sub">Since 1953 · Secunderabad</span>
-    </div>
-  </div>
-  <div class="topbar-right">
-    <span class="topbar-note">World's Favourite Biryani</span>
-    <button class="cart-btn" id="cartBtn" aria-label="Open cart">
-      <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1.4"/><circle cx="19" cy="21" r="1.4"/><path d="M2.5 3h2l2.6 12.4a2 2 0 0 0 2 1.6h8.9a2 2 0 0 0 2-1.6L21.5 7H6"/></svg>
-      <span class="cart-count" id="cartCount">0</span>
-    </button>
-  </div>
+<header class="sitenav">
+  <a class="brand" href="index.html">
+    <span class="brand-mark">P</span>
+    <span class="brand-text"><span class="brand-name">PARADISE</span><span class="brand-sub">Since 1953 · Secunderabad</span></span>
+  </a>
+  <nav class="navlinks">
+    <a href="index.html" class="active">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="order.html">Order</a>
+    <a class="cart-link" href="cart.html" id="navCart">Cart <span class="cart-badge" data-cart-count>0</span></a>
+  </nav>
 </header>
 
-<main class="stage" id="stage">
-
-  <nav class="dish-list" id="dishList" aria-label="Dishes"></nav>
-
-  <section class="plate-zone">
-    <div class="plate-wrap" id="plateWrap">
-      <div class="plate-tilt" id="plateTilt">
-        <div class="plate-roll" id="plateRoll">
-          <img class="plate-img" id="plateImg" src="assets/chicken-biryani.jpg" alt="Chicken Dum Biryani, top-down on a dark stoneware plate">
-          <div class="plate-shade" aria-hidden="true"></div>
-        </div>
+<section class="hero-l">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Secunderabad · Est. 1953</p>
+      <h1 class="hero-word">PARA<em>DISE</em></h1>
+      <p class="hero-tag">World's Favourite Biryani — A Legend Since 1953</p>
+      <p class="hero-copy">Born as a small café beside the Paradise cinema in Secunderabad, Paradise has served authentic Hyderabadi dum biryani for over seventy years — sealed handis, layered basmati, saffron, and patience.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-gold" href="order.html">Order Now →</a>
+        <a class="btn btn-ghost" href="shop.html">Browse Shop</a>
       </div>
-      <svg class="callout-lines" id="calloutLines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"></svg>
-      <div class="callouts" id="callouts"></div>
-    </div>
-    <p class="plate-hint" id="plateHint">Sealed &amp; slow-cooked on dum · served with raita &amp; mirchi ka salan</p>
-  </section>
-
-  <aside class="dish-info">
-    <p class="info-eyebrow" id="infoTag">Serves 1 · The Original</p>
-    <h1 class="info-name" id="infoName">Chicken Dum Biryani</h1>
-    <p class="info-desc" id="infoDesc"></p>
-    <div class="info-price-row">
-      <span class="info-price" id="infoPrice">₹335</span>
-      <span class="info-per" id="infoPer">per plate</span>
-    </div>
-    <div class="info-actions">
-      <div class="qty-stepper" aria-label="Quantity">
-        <button class="qty-btn" id="qtyMinus" aria-label="Less">−</button>
-        <span class="qty-val" id="qtyVal">1</span>
-        <button class="qty-btn" id="qtyPlus" aria-label="More">+</button>
+      <div class="hero-stats">
+        <div class="hstat"><b>1953</b><span>Founded</span></div>
+        <div class="hstat"><b>70+ yrs</b><span>On the dum</span></div>
+        <div class="hstat"><b>5</b><span>Hyd. outlets</span></div>
       </div>
-      <button class="add-btn" id="addBtn">
-        <span>Add to order</span>
-        <span class="add-btn-price" id="addBtnPrice">₹335</span>
-      </button>
     </div>
-    <p class="info-note">Pickup from Paradise, Secunderabad · orders close 30 minutes before pickup</p>
-  </aside>
+    <div class="hero-plate">
+      <img src="assets/chicken-biryani.jpg" alt="Chicken Dum Biryani, top-down on a dark plate, slowly spinning">
+    </div>
+  </div>
+</section>
 
-</main>
+<div class="marquee" aria-hidden="true"><span class="marquee-track" id="mqTrack"></span></div>
 
-<footer class="footline">
-  <span>Paradise · Secunderabad</span>
-  <span class="foot-dot">·</span><span>Since 1953</span>
-  <span class="foot-dot">·</span><span>Open 11 AM – 11 PM</span>
-  <span class="foot-dot">·</span><span class="foot-hide">World's Favourite Biryani</span>
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">The Signatures</p>
+      <h2 class="sec-title">Six plates. One handi tradition.</h2>
+      <p class="sec-sub">Tap any plate to open it on the ordering stage — spinning, labelled, ready to fly into your cart.</p>
+    </div>
+    <div class="sig-grid" id="sigGrid"></div>
+  </div>
+</section>
+
+<section class="sec" style="background:var(--bg2);border-block:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">Our Story</p>
+      <h2 class="sec-title">From a cinema café to the world's favourite biryani</h2>
+      <p class="sec-sub">Paradise began in September 1953 as a small canteen and café in the Paradise cinema theatre, Secunderabad — a 100-seater serving typical Hyderabadi cuisine, founded by Ghulam Hussain and Hussain Hemati.</p>
+    </div>
+    <div class="timeline">
+      <div class="tl rv"><b>1953</b><p>The café opens beside Paradise cinema in Secunderabad, serving cinema-goers Hyderabadi biryani and café fare.</p></div>
+      <div class="tl rv"><b>1978</b><p>A. Hemati takes complete charge from his father and uncle, and renovates the restaurant for changing times.</p></div>
+      <div class="tl rv"><b>1983</b><p>Paradise Persis Family Restaurant and the hugely popular Paradise Takeaway open in Secunderabad.</p></div>
+      <div class="tl rv"><b>1996</b><p>A major restructuring and modernisation — Paradise expands, and the legend travels across Hyderabad and beyond.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">Dum Pukht</p>
+      <h2 class="sec-title">How the dum works</h2>
+    </div>
+    <div class="steps">
+      <div class="step rv"><div class="num">1</div><h3>Layered by hand</h3><p>Marinated meat and long-grain basmati are layered in the handi with saffron, mint, and golden fried onion.</p></div>
+      <div class="step rv"><div class="num">2</div><h3>Sealed &amp; slow-cooked</h3><p>The handi is sealed and slow-cooked on dum, so the steam cooks the rice in the meat's own aroma — nothing escapes.</p></div>
+      <div class="step rv"><div class="num">3</div><h3>Opened at the table</h3><p>Served straight from the dum with raita and mirchi ka salan, exactly as it has been since the 1960s.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="background:var(--bg2);border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">Visit</p>
+      <h2 class="sec-title">Find a Paradise</h2>
+      <p class="sec-sub">Open daily, 11 AM – 11 PM.</p>
+    </div>
+    <div class="outlets">
+      <div class="outlet rv"><div><b>Secunderabad</b> <span class="flag">Flagship · Paradise Circle</span></div><span>11 AM – 11 PM</span></div>
+      <div class="outlet rv"><div><b>Himayat Nagar</b></div><span>11 AM – 11 PM</span></div>
+      <div class="outlet rv"><div><b>Hitech City</b></div><span>11 AM – 11 PM</span></div>
+      <div class="outlet rv"><div><b>Begumpet</b></div><span>11 AM – 11 PM</span></div>
+      <div class="outlet rv"><div><b>Kukatpally</b></div><span>11 AM – 11 PM</span></div>
+    </div>
+    <div style="margin-top:30px" class="rv"><a class="btn btn-gold" href="order.html">Start an Order →</a></div>
+  </div>
+</section>
+
+<footer class="sitefoot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="index.html" style="text-decoration:none;display:flex;align-items:center;gap:11px">
+          <span class="brand-mark">P</span>
+          <span class="brand-text"><span class="brand-name">PARADISE</span><span class="brand-sub">Since 1953 · Secunderabad</span></span>
+        </a>
+        <p>The world's favourite Hyderabadi dum biryani — from a small cinema café in 1953 to a legend of Hyderabad.</p>
+      </div>
+      <nav class="foot-links">
+        <a href="index.html">Home</a><a href="shop.html">Shop</a><a href="order.html">Order</a><a href="cart.html">Cart</a>
+      </nav>
+    </div>
+    <div class="foot-base"><span>Paradise · Secunderabad</span><span>·</span><span>Since 1953</span><span>·</span><span>Open 11 AM – 11 PM</span><span>·</span><span>World's Favourite Biryani</span></div>
+  </div>
 </footer>
 
-<button class="order-bar" id="orderBar">
-  <span class="order-bar-left" id="orderBarCount">0 items</span>
-  <span class="order-bar-cta">View order</span>
-  <span class="order-bar-total" id="orderBarTotal">₹0</span>
-</button>
+<a class="sticky-cartbar" id="stickyBar" href="cart.html"><span id="stickyCount">0 items</span><span>View Cart →</span><span id="stickyTotal">₹0</span></a>
 
-<div class="scrim" id="scrim"></div>
-<aside class="cart" id="cart" aria-label="Your order">
-  <div class="cart-head">
-    <div>
-      <h2 class="cart-title">Your order</h2>
-      <p class="cart-sub">Paradise · Secunderabad</p>
-    </div>
-    <button class="cart-close" id="cartClose" aria-label="Close cart">✕</button>
-  </div>
-
-  <div class="cart-view" id="cartView">
-    <div class="mode-toggle" aria-label="Pickup or delivery">
-      <button class="mode-btn active" id="modePickup" data-mode="pickup">Pickup</button>
-      <button class="mode-btn" id="modeDelivery" data-mode="delivery">Delivery</button>
-    </div>
-
-    <div class="cart-items" id="cartItems"></div>
-    <p class="cart-empty" id="cartEmpty">Your plate is empty.<br>Add a biryani to begin.</p>
-
-    <div class="cart-fields">
-      <label class="field" id="addressField" hidden>
-        <span>Delivery address</span>
-        <textarea id="custAddress" rows="2" placeholder="House no, street, area"></textarea>
-      </label>
-      <label class="field">
-        <span>Your name</span>
-        <input id="custName" type="text" placeholder="Name for the order" autocomplete="name">
-      </label>
-    </div>
-
-    <div class="cart-totals">
-      <div class="tot-row"><span>Subtotal</span><span id="totSubtotal">₹0</span></div>
-      <div class="tot-row" id="deliveryRow" hidden><span>Delivery</span><span id="totDelivery">₹40</span></div>
-      <div class="tot-row tot-grand"><span>Total</span><span id="totGrand">₹0</span></div>
-    </div>
-    <p class="cart-note">Orders close 30 minutes before pickup.</p>
-    <button class="checkout-btn" id="checkoutBtn">Place order</button>
-  </div>
-
-  <div class="confirm-view" id="confirmView" hidden>
-    <div class="confirm-seal">✓</div>
-    <h3 class="confirm-title">Order confirmed</h3>
-    <p class="confirm-text">Thank you — the handi is on the dum.</p>
-    <div class="confirm-card">
-      <div class="confirm-row"><span>Receipt no.</span><strong id="confirmReceipt">PRD-000000</strong></div>
-      <div class="confirm-row"><span id="confirmWhenLabel">Pickup time</span><strong id="confirmWhen">—</strong></div>
-      <div class="confirm-row"><span>Mode</span><strong id="confirmMode">Pickup</strong></div>
-      <div class="confirm-row"><span>Total</span><strong id="confirmTotal">₹0</strong></div>
-    </div>
-    <div class="confirm-items" id="confirmItems"></div>
-    <button class="checkout-btn" id="confirmDone">Done</button>
-  </div>
-</aside>
-
-<script src="app.js"></script>
+<script src="cart.js"></script>
+<script src="landing.js"></script>
 </body>
 </html>

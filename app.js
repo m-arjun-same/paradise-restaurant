@@ -1,96 +1,73 @@
-/* Paradise — single-screen ordering stage (own code) */
+/* Paradise — order stage (order.html). Own code.
+   Catalog + cart come from cart.js (shared localStorage `paradise_cart`). */
 'use strict';
 
-/* ---------------- data (from PARADISE-DATA.md only) ---------------- */
-const DISHES = [
-  {
-    id: 'chicken', name: 'Chicken Dum Biryani', price: 335, img: 'assets/chicken-biryani.jpg',
-    tag: 'Serves 1 · The Original', per: 'per plate', biryani: true,
-    desc: 'Chicken and basmati rice cooked in layers, flavoured with saffron. Served with raita and mirchi ka salan.',
-    hint: 'Sealed & slow-cooked on dum · served with raita & mirchi ka salan',
-    callouts: [
-      { name: 'Fresh Mint', sub: 'hand-torn leaves', x: 75, y: 23, side: 'r', ly: 13 },
-      { name: 'Dum Chicken', sub: 'sealed & slow-cooked', x: 50, y: 46, side: 'r', ly: 40 },
-      { name: 'Saffron Basmati', sub: 'layered long-grain rice', x: 71, y: 71, side: 'r', ly: 76 },
-      { name: 'Crispy Fried Onion', sub: 'golden birista', x: 31, y: 37, side: 'l', ly: 31 },
-      { name: 'Whole Spices', sub: 'cardamom & clove', x: 22, y: 56, side: 'l', ly: 60 },
-    ],
-  },
-  {
-    id: 'mutton', name: 'Mutton Dum Biryani', price: 369, img: 'assets/mutton-biryani.jpg',
-    tag: 'Serves 1 · Dum Pukht', per: 'per plate', biryani: true,
-    desc: 'Tender mutton layered with basmati and saffron, sealed and slow-cooked on dum. Served with raita and mirchi ka salan.',
-    hint: 'Sealed & slow-cooked on dum · served with raita & mirchi ka salan',
-    callouts: [
-      { name: 'Fresh Mint', sub: 'hand-torn leaves', x: 77, y: 24, side: 'r', ly: 15 },
-      { name: 'Tender Mutton', sub: 'on the bone, dum-soft', x: 68, y: 45, side: 'r', ly: 43 },
-      { name: 'Pure Ghee', sub: 'drizzled over the top', x: 57, y: 70, side: 'r', ly: 77 },
-      { name: 'Crispy Fried Onion', sub: 'golden birista', x: 56, y: 27, side: 'l', ly: 22 },
-      { name: 'Whole Spices', sub: 'cinnamon & cardamom', x: 48, y: 51, side: 'l', ly: 57 },
-    ],
-  },
-  {
-    id: 'special', name: 'Special Biryani', price: 860, img: 'assets/special-biryani.jpg',
-    tag: 'Serves 2 · For Sharing', per: 'serves two', biryani: true,
-    desc: 'A rare combination of chicken and lamb with saffron, layered over basmati. Served with raita and mirchi ka salan.',
-    hint: 'The grand plate — chicken & lamb together · serves 2',
-    callouts: [
-      { name: 'Fresh Mint', sub: 'hand-torn leaves', x: 41, y: 17, side: 'l', ly: 12 },
-      { name: 'Dum Chicken', sub: 'sealed & slow-cooked', x: 44, y: 40, side: 'l', ly: 36 },
-      { name: 'Star Anise & Bay', sub: 'whole spices', x: 26, y: 64, side: 'l', ly: 70 },
-      { name: 'Saffron Basmati', sub: 'layered long-grain rice', x: 74, y: 28, side: 'r', ly: 22 },
-      { name: 'Tender Mutton', sub: 'on the bone, dum-soft', x: 66, y: 62, side: 'r', ly: 58 },
-    ],
-  },
-  {
-    id: 'veg', name: 'Veg Dum Biryani', price: 224, img: 'assets/veg-biryani.jpg',
-    tag: 'Serves 1 · Vegetarian', per: 'per plate', biryani: true,
-    desc: 'Fresh vegetables layered with basmati and saffron, sealed and slow-cooked on dum. Served with raita and mirchi ka salan.',
-    hint: 'Garden vegetables on dum · served with raita & mirchi ka salan',
-    callouts: [
-      { name: 'Cauliflower', sub: 'dum-roasted florets', x: 50, y: 40, side: 'r', ly: 26 },
-      { name: 'Saffron Basmati', sub: 'layered long-grain rice', x: 78, y: 40, side: 'r', ly: 52 },
-      { name: 'Green Beans', sub: 'garden fresh', x: 49, y: 68, side: 'r', ly: 77 },
-      { name: 'Carrot', sub: 'sweet batons', x: 18, y: 40, side: 'l', ly: 34 },
-      { name: 'Garden Peas', sub: 'scattered through', x: 33, y: 31, side: 'l', ly: 60 },
-    ],
-  },
-  {
-    id: 'egg', name: 'Egg Biryani', price: 224, img: 'assets/egg-biryani.jpg',
-    tag: 'Serves 1', per: 'per plate', biryani: true,
-    desc: 'Masala egg layered with basmati and saffron, sealed and slow-cooked on dum. Served with raita and mirchi ka salan.',
-    hint: 'Sealed & slow-cooked on dum · served with raita & mirchi ka salan',
-    callouts: [
-      { name: 'Masala Egg', sub: 'golden, spice-coated', x: 50, y: 27, side: 'r', ly: 18 },
-      { name: 'Bay Leaf', sub: 'whole spice', x: 85, y: 57, side: 'r', ly: 48 },
-      { name: 'Saffron Basmati', sub: 'layered long-grain rice', x: 76, y: 72, side: 'r', ly: 76 },
-      { name: 'Fresh Mint', sub: 'hand-torn leaves', x: 35, y: 28, side: 'l', ly: 22 },
-      { name: 'Crispy Fried Onion', sub: 'golden birista', x: 30, y: 62, side: 'l', ly: 57 },
-    ],
-  },
-  {
-    id: 'kebab', name: 'Chicken Tikka Kebab', price: 400, img: 'assets/tikka-kebab.jpg',
-    tag: '8 Pieces · Tandoor', per: '8 pieces', biryani: false,
-    desc: 'Boneless chicken in a yoghurt and chilli marinade, char-grilled over charcoal — smoky, with a whisper of garlic.',
-    hint: 'From the tandoor · char-grilled over charcoal',
-    callouts: [
-      { name: 'Chicken Tikka', sub: 'boneless, char-grilled', x: 59, y: 47, side: 'r', ly: 34 },
-      { name: 'Onion Rings', sub: 'crisp & raw', x: 82, y: 41, side: 'r', ly: 62 },
-      { name: 'Lemon Wedge', sub: 'a squeeze to finish', x: 68, y: 69, side: 'r', ly: 85 },
-      { name: 'Chilli Marinade', sub: 'yoghurt & spice', x: 31, y: 29, side: 'l', ly: 22 },
-      { name: 'Charcoal Grill', sub: 'smoky charred edges', x: 20, y: 50, side: 'l', ly: 54 },
-    ],
-  },
-];
+/* ---------------- stage data: hero dishes + their callouts ---------------- */
+const CALLOUTS = {
+  chicken: [
+    { name: 'Fresh Mint', sub: 'hand-torn leaves', x: 75, y: 23, side: 'r', ly: 13 },
+    { name: 'Dum Chicken', sub: 'sealed & slow-cooked', x: 50, y: 46, side: 'r', ly: 40 },
+    { name: 'Saffron Basmati', sub: 'layered long-grain rice', x: 71, y: 71, side: 'r', ly: 76 },
+    { name: 'Crispy Fried Onion', sub: 'golden birista', x: 31, y: 37, side: 'l', ly: 31 },
+    { name: 'Whole Spices', sub: 'cardamom & clove', x: 22, y: 56, side: 'l', ly: 60 },
+  ],
+  mutton: [
+    { name: 'Fresh Mint', sub: 'hand-torn leaves', x: 77, y: 24, side: 'r', ly: 15 },
+    { name: 'Tender Mutton', sub: 'on the bone, dum-soft', x: 68, y: 45, side: 'r', ly: 43 },
+    { name: 'Pure Ghee', sub: 'drizzled over the top', x: 57, y: 70, side: 'r', ly: 77 },
+    { name: 'Crispy Fried Onion', sub: 'golden birista', x: 56, y: 27, side: 'l', ly: 22 },
+    { name: 'Whole Spices', sub: 'cinnamon & cardamom', x: 48, y: 51, side: 'l', ly: 57 },
+  ],
+  special: [
+    { name: 'Fresh Mint', sub: 'hand-torn leaves', x: 41, y: 17, side: 'l', ly: 12 },
+    { name: 'Dum Chicken', sub: 'sealed & slow-cooked', x: 44, y: 40, side: 'l', ly: 36 },
+    { name: 'Star Anise & Bay', sub: 'whole spices', x: 26, y: 64, side: 'l', ly: 70 },
+    { name: 'Saffron Basmati', sub: 'layered long-grain rice', x: 74, y: 28, side: 'r', ly: 22 },
+    { name: 'Tender Mutton', sub: 'on the bone, dum-soft', x: 66, y: 62, side: 'r', ly: 58 },
+  ],
+  veg: [
+    { name: 'Cauliflower', sub: 'dum-roasted florets', x: 50, y: 40, side: 'r', ly: 26 },
+    { name: 'Saffron Basmati', sub: 'layered long-grain rice', x: 78, y: 40, side: 'r', ly: 52 },
+    { name: 'Green Beans', sub: 'garden fresh', x: 49, y: 68, side: 'r', ly: 77 },
+    { name: 'Carrot', sub: 'sweet batons', x: 18, y: 40, side: 'l', ly: 34 },
+    { name: 'Garden Peas', sub: 'scattered through', x: 33, y: 31, side: 'l', ly: 60 },
+  ],
+  egg: [
+    { name: 'Masala Egg', sub: 'golden, spice-coated', x: 50, y: 27, side: 'r', ly: 18 },
+    { name: 'Bay Leaf', sub: 'whole spice', x: 85, y: 57, side: 'r', ly: 48 },
+    { name: 'Saffron Basmati', sub: 'layered long-grain rice', x: 76, y: 72, side: 'r', ly: 76 },
+    { name: 'Fresh Mint', sub: 'hand-torn leaves', x: 35, y: 28, side: 'l', ly: 22 },
+    { name: 'Crispy Fried Onion', sub: 'golden birista', x: 30, y: 62, side: 'l', ly: 57 },
+  ],
+  kebab: [
+    { name: 'Chicken Tikka', sub: 'boneless, char-grilled', x: 59, y: 47, side: 'r', ly: 34 },
+    { name: 'Onion Rings', sub: 'crisp & raw', x: 82, y: 41, side: 'r', ly: 62 },
+    { name: 'Lemon Wedge', sub: 'a squeeze to finish', x: 68, y: 69, side: 'r', ly: 85 },
+    { name: 'Chilli Marinade', sub: 'yoghurt & spice', x: 31, y: 29, side: 'l', ly: 22 },
+    { name: 'Charcoal Grill', sub: 'smoky charred edges', x: 20, y: 50, side: 'l', ly: 54 },
+  ],
+};
+const PER = { chicken: 'per plate', mutton: 'per plate', special: 'serves two', veg: 'per plate', egg: 'per plate', kebab: '8 pieces' };
+const HINT = {
+  chicken: 'Sealed & slow-cooked on dum · served with raita & mirchi ka salan',
+  mutton: 'Sealed & slow-cooked on dum · served with raita & mirchi ka salan',
+  special: 'The grand plate — chicken & lamb together · serves 2',
+  veg: 'Garden vegetables on dum · served with raita & mirchi ka salan',
+  egg: 'Sealed & slow-cooked on dum · served with raita & mirchi ka salan',
+  kebab: 'From the tandoor · char-grilled over charcoal',
+};
+const DISHES = ['chicken', 'mutton', 'special', 'veg', 'egg', 'kebab'].map((id) => {
+  const p = productById(id);
+  return { id, name: p.name, price: p.price, img: p.img, tag: p.tag, desc: p.desc, biryani: p.biryani, per: PER[id], hint: HINT[id], callouts: CALLOUTS[id] };
+});
 const byId = (id) => DISHES.find((d) => d.id === id);
-const inr = (n) => '₹' + n.toLocaleString('en-IN');
 
 /* ---------------- state ---------------- */
 let activeId = 'chicken';
 let pendingQty = 1;
-let mode = 'pickup';
-const cart = new Map(); // key: dishId|spice -> {dishId, qty, spice}
 let switching = false;
+const params = new URLSearchParams(location.search);
+if (params.get('dish') && byId(params.get('dish'))) activeId = params.get('dish');
 
 /* ---------------- els ---------------- */
 const $ = (s) => document.querySelector(s);
@@ -103,8 +80,11 @@ const dishListEl = $('#dishList'), plateWrap = $('#plateWrap'), plateTilt = $('#
   cartBtn = $('#cartBtn'), cartCount = $('#cartCount'),
   cartEl = $('#cart'), scrim = $('#scrim'),
   cartItemsEl = $('#cartItems'), cartEmpty = $('#cartEmpty'),
-  totSubtotal = $('#totSubtotal'), totGrand = $('#totGrand'), deliveryRow = $('#deliveryRow'),
+  totSubtotal = $('#totSubtotal'), totGrand = $('#totGrand'),
   orderBar = $('#orderBar'), orderBarCount = $('#orderBarCount'), orderBarTotal = $('#orderBarTotal');
+
+/* set initial plate before first paint of JS-driven content */
+plateImg.src = byId(activeId).img;
 
 /* preload all plates so switches never wait on network */
 DISHES.forEach((d) => { const i = new Image(); i.src = d.img; });
@@ -224,100 +204,61 @@ if (!reduceMotion) {
   })(performance.now());
 }
 
-/* ---------------- fly to cart ---------------- */
-function flyToCart() {
-  const from = plateImg.getBoundingClientRect();
-  const to = cartBtn.getBoundingClientRect();
-  const size = Math.min(from.width, 190);
-  const clone = document.createElement('img');
-  clone.src = plateImg.src;
-  clone.className = 'fly-clone';
-  clone.style.left = (from.left + from.width / 2 - size / 2) + 'px';
-  clone.style.top = (from.top + from.height / 2 - size / 2) + 'px';
-  clone.style.width = size + 'px';
-  clone.style.height = size + 'px';
-  document.body.appendChild(clone);
-  const dx = (to.left + to.width / 2) - (from.left + from.width / 2);
-  const dy = (to.top + to.height / 2) - (from.top + from.height / 2);
-  const anim = clone.animate([
-    { transform: 'translate(0,0) scale(1) rotate(0deg)', opacity: 1 },
-    { transform: 'translate(' + dx * 0.5 + 'px,' + (dy * 0.5 - 130) + 'px) scale(.48) rotate(160deg)', opacity: 1, offset: 0.55 },
-    { transform: 'translate(' + dx + 'px,' + dy + 'px) scale(.07) rotate(330deg)', opacity: 0.85 },
-  ], { duration: 780, easing: 'cubic-bezier(.5,.05,.3,1)' });
-  anim.onfinish = () => {
-    clone.remove();
-    cartBtn.classList.remove('pop'); void cartBtn.offsetWidth; cartBtn.classList.add('pop');
-  };
-}
-
-/* ---------------- cart ---------------- */
-function cartCountTotal() { let n = 0; cart.forEach((i) => { n += i.qty; }); return n; }
-function cartSubtotal() { let s = 0; cart.forEach((i) => { s += byId(i.dishId).price * i.qty; }); return s; }
-
+/* ---------------- cart drawer (shared cart, simple: items + Go to Cart) ---------------- */
 function renderCart() {
-  const n = cartCountTotal(), sub = cartSubtotal();
-  const grand = sub + (mode === 'delivery' && n > 0 ? 40 : 0);
+  const items = PCart.items();
+  const n = PCart.count(), sub = PCart.subtotal();
   cartCount.textContent = n;
   cartEmpty.style.display = n ? 'none' : 'block';
   orderBarCount.textContent = n + (n === 1 ? ' item' : ' items');
-  orderBarTotal.textContent = inr(grand);
+  orderBarTotal.textContent = inr(sub);
   totSubtotal.textContent = inr(sub);
-  totGrand.textContent = inr(grand);
-  deliveryRow.hidden = !(mode === 'delivery' && n > 0);
-  $('#checkoutBtn').disabled = n === 0;
+  totGrand.textContent = inr(sub);
+  const goBtn = $('#goCartBtn');
+  if (goBtn) goBtn.style.opacity = n ? '1' : '.45';
 
   cartItemsEl.innerHTML = '';
-  cart.forEach((item, key) => {
-    const d = byId(item.dishId);
+  items.forEach((item) => {
+    const p = productById(item.id);
+    if (!p) return;
     const row = document.createElement('div');
     row.className = 'ci';
     let spiceHtml = '';
-    if (d.biryani) {
+    if (p.biryani) {
       spiceHtml = '<select class="ci-spice" data-act="spice" aria-label="Spice level">' +
         ['Mild', 'Medium', 'Hot'].map((s) =>
           '<option value="' + s + '"' + (item.spice === s ? ' selected' : '') + '>' + s + '</option>').join('') +
         '</select>';
     }
+    const thumb = p.img
+      ? '<img class="ci-img" src="' + p.img + '" alt="">'
+      : '<span class="ci-img" style="display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-weight:700;color:#d9a441;border:1px dashed rgba(217,164,65,.4)">P</span>';
     row.innerHTML =
-      '<img class="ci-img" src="' + d.img + '" alt="">' +
-      '<div class="ci-body"><div class="ci-top"><span class="ci-name">' + d.name + '</span>' +
-      '<span class="ci-price">' + inr(d.price * item.qty) + '</span></div>' +
+      thumb +
+      '<div class="ci-body"><div class="ci-top"><span class="ci-name">' + p.name + '</span>' +
+      '<span class="ci-price">' + inr(p.price * item.qty) + '</span></div>' +
       '<div class="ci-controls"><span class="ci-stepper">' +
       '<button data-act="minus" aria-label="Less">−</button><span>' + item.qty + '</span><button data-act="plus" aria-label="More">+</button></span>' +
       spiceHtml +
       '<button class="ci-remove" data-act="remove">Remove</button></div></div>';
-    row.querySelector('[data-act="minus"]').addEventListener('click', () => {
-      item.qty -= 1; if (item.qty <= 0) cart.delete(key); renderCart();
-    });
-    row.querySelector('[data-act="plus"]').addEventListener('click', () => { item.qty = Math.min(20, item.qty + 1); renderCart(); });
-    row.querySelector('[data-act="remove"]').addEventListener('click', () => { cart.delete(key); renderCart(); });
+    row.querySelector('[data-act="minus"]').addEventListener('click', () => { PCart.setQty(item, item.qty - 1); renderCart(); });
+    row.querySelector('[data-act="plus"]').addEventListener('click', () => { PCart.setQty(item, item.qty + 1); renderCart(); });
+    row.querySelector('[data-act="remove"]').addEventListener('click', () => { PCart.remove(item); renderCart(); });
     const sel = row.querySelector('[data-act="spice"]');
-    if (sel) sel.addEventListener('change', () => {
-      const nk = item.dishId + '|' + sel.value;
-      const existing = cart.get(nk);
-      cart.delete(key);
-      if (existing && existing !== item) existing.qty = Math.min(20, existing.qty + item.qty);
-      else cart.set(nk, { dishId: item.dishId, qty: item.qty, spice: sel.value });
-      renderCart();
-    });
+    if (sel) sel.addEventListener('change', () => { PCart.setSpice(item, sel.value); renderCart(); });
     cartItemsEl.appendChild(row);
   });
 }
 
 addBtn.addEventListener('click', () => {
-  const d = byId(activeId);
-  const key = d.id + '|' + (d.biryani ? 'Medium' : '-');
-  const existing = cart.get(key);
-  if (existing) existing.qty = Math.min(20, existing.qty + pendingQty);
-  else cart.set(key, { dishId: d.id, qty: pendingQty, spice: d.biryani ? 'Medium' : null });
-  flyToCart();
+  PCart.add(activeId, pendingQty);
+  flyToCart(plateImg.getBoundingClientRect(), plateImg.getAttribute('src'), cartBtn);
   renderCart();
 });
 
-/* ---------------- cart open/close + mode ---------------- */
+/* ---------------- cart open/close ---------------- */
 function openCart() {
-  $('#cartView').hidden = false;
-  $('#confirmView').hidden = true;
+  renderCart();
   cartEl.classList.add('open'); scrim.classList.add('open');
   document.body.style.overflow = 'hidden';
 }
@@ -331,45 +272,6 @@ $('#cartClose').addEventListener('click', closeCart);
 scrim.addEventListener('click', closeCart);
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeCart(); });
 
-function setMode(m) {
-  mode = m;
-  $('#modePickup').classList.toggle('active', m === 'pickup');
-  $('#modeDelivery').classList.toggle('active', m === 'delivery');
-  $('#addressField').hidden = m !== 'delivery';
-  renderCart();
-}
-$('#modePickup').addEventListener('click', () => setMode('pickup'));
-$('#modeDelivery').addEventListener('click', () => setMode('delivery'));
-
-/* ---------------- checkout ---------------- */
-$('#checkoutBtn').addEventListener('click', () => {
-  if (cartCountTotal() === 0) return;
-  if (mode === 'delivery' && !$('#custAddress').value.trim()) {
-    $('#custAddress').focus();
-    $('#custAddress').style.borderColor = 'var(--red)';
-    setTimeout(() => { $('#custAddress').style.borderColor = ''; }, 1600);
-    return;
-  }
-  const now = new Date();
-  const when = new Date(now.getTime() + (mode === 'pickup' ? 45 : 60) * 60000);
-  const receipt = 'PRD-' + now.getTime().toString(36).toUpperCase().slice(-6);
-  $('#confirmReceipt').textContent = receipt;
-  $('#confirmWhenLabel').textContent = mode === 'pickup' ? 'Pickup time' : 'Delivery by';
-  $('#confirmWhen').textContent = when.toLocaleTimeString('en-IN', { hour: 'numeric', minute: '2-digit' });
-  $('#confirmMode').textContent = mode === 'pickup' ? 'Pickup · Secunderabad' : 'Delivery';
-  $('#confirmTotal').textContent = inr(cartSubtotal() + (mode === 'delivery' ? 40 : 0));
-  const lines = [];
-  cart.forEach((i) => {
-    const d = byId(i.dishId);
-    lines.push(i.qty + ' × ' + d.name + (i.spice ? ' (' + i.spice + ')' : '') + ' — ' + inr(d.price * i.qty));
-  });
-  $('#confirmItems').innerHTML = lines.join('<br>');
-  cart.clear(); renderCart();
-  $('#cartView').hidden = true;
-  $('#confirmView').hidden = false;
-});
-$('#confirmDone').addEventListener('click', closeCart);
-
 /* re-render callouts if the viewport crosses the mobile breakpoint */
 let wasMobile = window.innerWidth <= 860;
 window.addEventListener('resize', () => {
@@ -377,10 +279,17 @@ window.addEventListener('resize', () => {
   if (m !== wasMobile) { wasMobile = m; if (!switching) renderCallouts(byId(activeId)); }
 });
 
+/* keep badges in sync if the cart changes in another tab/page */
+window.addEventListener('storage', (e) => { if (e.key === PCart.KEY) { PCart._items = null; renderCart(); } });
+
 /* ---------------- init ---------------- */
 renderInfo(byId(activeId));
 renderCallouts(byId(activeId));
 renderCart();
+if (window.innerWidth <= 860) {
+  const activeBtn = dishListEl.querySelector('.dish-item.active');
+  if (activeBtn) activeBtn.scrollIntoView({ inline: 'center', block: 'nearest' });
+}
 
 /* loader: hide on ready, hard failsafe at 7s */
 function hideLoader() { $('#loader').classList.add('done'); }
