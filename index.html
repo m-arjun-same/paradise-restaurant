@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paradise Restaurant — World's Favourite Biryani | A Legend Since 1953</title>
+<meta name="description" content="Paradise Restaurant, Secunderabad. World's Favourite Biryani — a legend since 1953. Order Chicken Dum Biryani, Mutton Dum Biryani, kebabs and more. Open 11 AM – 11 PM.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,900&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="loader"><div class="loader-plate"></div><p>PARADISE</p></div>
+
+<header class="site-header">
+  <a class="brand" href="#top">PARADISE<span>EST. 1953 · SECUNDERABAD</span></a>
+  <nav>
+    <a href="#signature">Signature</a><a href="#menu">Menu</a><a href="#story">Story</a><a href="#visit">Visit</a>
+  </nav>
+  <button id="cartBtn" class="cart-btn" aria-label="Open cart">🛒 Cart <span id="cartCount" class="cart-count">0</span></button>
+</header>
+
+<main id="top">
+  <!-- 1 HERO -->
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">A LEGEND SINCE 1953 · SECUNDERABAD</p>
+      <h1>PARADISE</h1>
+      <p class="hero-sub">World's Favourite Biryani</p>
+      <p class="hero-text">Seventy years of dum. One handi, sealed with dough, opened at your table — layered basmati, saffron and a recipe Hyderabad grew up on.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-gold" href="#menu">Order Now</a>
+        <a class="btn btn-ghost" href="#signature">Meet the Signatures</a>
+      </div>
+      <div class="hero-stats">
+        <div><strong>1953</strong><span>Founded</span></div>
+        <div><strong>70+</strong><span>Years of dum</span></div>
+        <div><strong>11–11</strong><span>Open daily</span></div>
+      </div>
+    </div>
+    <div class="hero-plate-wrap">
+      <div class="plate hero-plate spin-slow">
+        <img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=900&q=80" alt="Mutton Dum Biryani, top plate view">
+      </div>
+      <div class="hero-badge">DUM<br>PUKHT</div>
+    </div>
+  </section>
+
+  <!-- 2 MARQUEE -->
+  <div class="marquee" aria-hidden="true"><div class="marquee-track">
+    <span>CHICKEN DUM BIRYANI ✦ MUTTON DUM BIRYANI ✦ SPECIAL BIRYANI ✦ VEG DUM BIRYANI ✦ CHICKEN TIKKA KEBAB ✦ EGG BIRYANI ✦ SINCE 1953 ✦ </span>
+    <span>CHICKEN DUM BIRYANI ✦ MUTTON DUM BIRYANI ✦ SPECIAL BIRYANI ✦ VEG DUM BIRYANI ✦ CHICKEN TIKKA KEBAB ✦ EGG BIRYANI ✦ SINCE 1953 ✦ </span>
+  </div></div>
+
+  <!-- 3 SIGNATURE — interactive plate + ingredient callouts -->
+  <section id="signature" class="signature">
+    <p class="eyebrow center">THE SIGNATURES</p>
+    <h2>One plate. <em>Every ingredient, labelled.</em></h2>
+    <p class="section-sub">Pick a dish — the plate turns like a lazy Susan, and its ingredients point themselves out.</p>
+
+    <div class="sig-stage">
+      <div class="sig-plate-zone">
+        <div id="sigPlateTilt" class="sig-tilt">
+          <div id="sigPlate" class="plate sig-plate">
+            <img id="sigImg" src="" alt="">
+          </div>
+          <svg id="sigLines" class="sig-lines" viewBox="0 0 100 100" preserveAspectRatio="none"></svg>
+          <div id="sigCallouts" class="sig-callouts"></div>
+        </div>
+      </div>
+      <div class="sig-info">
+        <h3 id="sigName"></h3>
+        <p id="sigDesc"></p>
+        <p class="sig-price" id="sigPrice"></p>
+        <button class="btn btn-gold" id="sigAdd">Add to Order</button>
+        <div class="sig-tabs" id="sigTabs"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 MENU -->
+  <section id="menu" class="menu">
+    <p class="eyebrow center">FULL MENU</p>
+    <h2>Order the <em>legends</em></h2>
+    <p class="section-sub">Every biryani served with raita &amp; mirchi ka salan. Tap Add — watch it fly to your cart.</p>
+    <div class="menu-grid" id="menuGrid"></div>
+
+    <div class="menu-more">
+      <h3>More from the kitchen</h3>
+      <ul>
+        <li><span>Chicken Tikka Kebab (Half)</span><b>₹185</b></li>
+        <li><span>Chicken Kalmi Kebab</span><b>—</b></li>
+        <li><span>Chicken Garlic Kebab</span><b>₹400</b></li>
+        <li><span>Special Kebab Platter</span><b>₹460</b></li>
+        <li><span>Butter Chicken</span><b>—</b></li>
+        <li><span>Dal Fry</span><b>—</b></li>
+        <li><span>Naan / Roti</span><b>—</b></li>
+        <li><span>Double ka Meetha</span><b>—</b></li>
+        <li><span>Qubani ka Meetha</span><b>—</b></li>
+        <li><span>Haleem (seasonal)</span><b>—</b></li>
+      </ul>
+      <p class="fineprint">Prices from Paradise Hyderabad menus; they vary by outlet. Items marked — are priced in-store.</p>
+    </div>
+  </section>
+
+  <!-- 5 STORY -->
+  <section id="story" class="story">
+    <p class="eyebrow center">OUR STORY</p>
+    <h2>From a cinema café <em>to a legend</em></h2>
+    <p class="section-sub">In September 1953, a small canteen opened inside the Paradise cinema theatre at Paradise Circle, Secunderabad. Founders Ghulam Hussain and Hussain Hemati served the Hyderabadi food the city loved — and the biryani never left the menu, or the city's heart.</p>
+    <div class="timeline">
+      <div class="t-item"><span class="t-year">1953</span><div><h4>The café opens</h4><p>A small canteen in Paradise cinema theatre, Paradise Circle, Secunderabad. By the early 1960s it is a 100-seater serving Hyderabadi cuisine.</p></div></div>
+      <div class="t-item"><span class="t-year">1978</span><div><h4>A. Hemati takes charge</h4><p>The next generation takes the reins and sharpens the kitchen's focus on dum biryani.</p></div></div>
+      <div class="t-item"><span class="t-year">1983</span><div><h4>Persis &amp; the Takeaway</h4><p>Paradise Persis Family Restaurant and Paradise Takeaway open in Secunderabad. In 1987 the theatre closes — the café carries on.</p></div></div>
+      <div class="t-item"><span class="t-year">1996</span><div><h4>The modern Paradise</h4><p>Major restructuring and modernisation — the legend grows across Hyderabad and beyond, one handi at a time.</p></div></div>
+    </div>
+  </section>
+
+  <!-- 6 WHY / HOW DUM WORKS -->
+  <section class="why">
+    <p class="eyebrow center">WHY PARADISE</p>
+    <h2>How <em>dum</em> works</h2>
+    <div class="why-grid">
+      <div class="why-card"><span>01</span><h4>Layered by hand</h4><p>Fragrant basmati layered over marinated meat, saffron milk, mint and birista — never mixed, always layered.</p></div>
+      <div class="why-card"><span>02</span><h4>Sealed &amp; slow-cooked</h4><p>The handi is sealed with dough and cooked on dum, so the steam perfumes every grain instead of escaping.</p></div>
+      <div class="why-card"><span>03</span><h4>Opened fresh</h4><p>The seal breaks only when it's time to serve — with raita and mirchi ka salan, the way it has been since 1953.</p></div>
+    </div>
+    <div class="stat-band">
+      <div><strong>70+</strong><span>years serving Hyderabad</span></div>
+      <div><strong>6</strong><span>signature dishes, one standard</span></div>
+      <div><strong>1953</strong><span>the year it all began</span></div>
+    </div>
+  </section>
+
+  <!-- 7 VISIT -->
+  <section id="visit" class="visit">
+    <p class="eyebrow center">VISIT</p>
+    <h2>The flagship &amp; <em>more</em></h2>
+    <div class="visit-grid">
+      <div class="visit-main">
+        <h3>Paradise — Secunderabad Flagship</h3>
+        <p>Paradise Circle, Secunderabad, Hyderabad</p>
+        <p class="hours">Open daily · 11:00 AM – 11:00 PM</p>
+        <p>Where it started in 1953 — the original home of the World's Favourite Biryani.</p>
+      </div>
+      <div class="visit-outlets">
+        <h3>Also in Hyderabad</h3>
+        <ul><li>Himayat Nagar</li><li>Hitech City</li><li>Begumpet</li><li>Kukatpally</li></ul>
+        <p class="fineprint">Outlet hours may vary.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="foot-brand">PARADISE</div>
+  <p>World's Favourite Biryani · A Legend Since 1953 · Paradise Circle, Secunderabad</p>
+  <p class="fineprint">Independent ordering-site concept inspired by Paradise, Hyderabad. Open daily 11 AM – 11 PM.</p>
+</footer>
+
+<!-- CART -->
+<div id="cartOverlay" class="cart-overlay"></div>
+<aside id="cartDrawer" class="cart-drawer" aria-hidden="true">
+  <div class="cart-head">
+    <h3>Your Order</h3>
+    <button id="cartClose" aria-label="Close cart">✕</button>
+  </div>
+  <div class="mode-toggle" role="tablist">
+    <button id="modePickup" class="mode-btn active">Pickup</button>
+    <button id="modeDelivery" class="mode-btn">Delivery</button>
+  </div>
+  <div id="cartItems" class="cart-items"></div>
+  <p id="cartEmpty" class="cart-empty">Your cart is empty. Add a biryani — you know you want to.</p>
+  <div class="cart-foot" id="cartFoot">
+    <div class="total-row"><span>Total</span><strong id="cartTotal">₹0</strong></div>
+    <form id="checkoutForm">
+      <input type="text" id="coName" placeholder="Your name" required autocomplete="name">
+      <textarea id="coAddress" placeholder="Delivery address" class="hidden"></textarea>
+      <p class="close-note">⏰ Orders close 30 minutes before pickup.</p>
+      <button type="submit" class="btn btn-gold btn-block">Place Order</button>
+    </form>
+    <div id="confirmBox" class="confirm hidden">
+      <div class="confirm-check">✓</div>
+      <h4>Order confirmed!</h4>
+      <p>Receipt No: <strong id="cfReceipt"></strong></p>
+      <p id="cfWhen"></p>
+      <p>Total paid at counter: <strong id="cfTotal"></strong></p>
+      <button class="btn btn-ghost" id="cfDone">Done</button>
+    </div>
+  </div>
+</aside>
+
+<!-- Mobile sticky order bar -->
+<button id="stickyBar" class="sticky-bar">
+  <span id="stickyInfo">Your cart is empty</span>
+  <span class="sticky-cta">Order →</span>
+</button>
+
+<script src="app.js"></script>
+<script>/* loader failsafe: never trap the page */
+function hideLoader(){var l=document.getElementById('loader');if(l)l.classList.add('done')}
+window.addEventListener('load',hideLoader);
+document.addEventListener('DOMContentLoaded',function(){setTimeout(hideLoader,900)});
+setTimeout(hideLoader,7000);
+</script>
+</body>
+</html>
