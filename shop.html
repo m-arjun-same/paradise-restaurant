@@ -3,72 +3,69 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Shop — Paradise Restaurant | Biryani, Kebabs & More</title>
-<meta name="description" content="Shop Paradise — Hyderabadi dum biryanis, tandoor kebabs, mains, breads and desserts. A legend since 1953.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%230c0906' stroke='%23d9a441' stroke-width='2'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='34' font-weight='700' fill='%23d9a441' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css">
+<title>The Layer Table — Shop Paradise | Biryani, Kebabs & More</title>
+<meta name="description" content="The Layer Table: every Paradise dish laid out in strata — biryanis, kebabs, mains, breads and desserts. A legend since 1953.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='29' fill='%23120b06' stroke='%23f5a301' stroke-width='3'/%3E%3Ctext x='32' y='44' font-family='Arial Black' font-size='30' fill='%23f5a301' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="handi.css">
 </head>
-<body class="site">
+<body>
 
-<header class="sitenav">
-  <a class="brand" href="index.html">
-    <span class="brand-mark">P</span>
-    <span class="brand-text"><span class="brand-name">PARADISE</span><span class="brand-sub">Since 1953 · Secunderabad</span></span>
+<div class="loader" id="loader"><div class="loader-stamp">PARADISE</div><small>Laying the table…</small></div>
+
+<header class="hnav">
+  <a class="hbrand" href="index.html">
+    <span class="rotor" data-rotor style="width:46px;height:46px"></span>
+    <span><span class="hbrand-name">PARADISE</span><span class="hbrand-sub">Sealed on dum · Est. 1953</span></span>
   </a>
-  <nav class="navlinks">
+  <nav class="hlinks">
     <a href="index.html">Home</a>
     <a href="shop.html" class="active">Shop</a>
     <a href="order.html">Order</a>
-    <a class="cart-link" href="cart.html" id="navCart">Cart <span class="cart-badge" data-cart-count>0</span></a>
+    <a class="handi-meter" href="cart.html" data-handi-meter aria-label="Your handi — view cart">
+      <span class="hm-pot"><span class="hm-lid"></span><span class="hm-body"><span class="hm-fill" data-handi-fill></span></span></span>
+      <span class="hm-label">Your Handi</span><span class="hm-count" data-cart-count>0</span>
+    </a>
   </nav>
 </header>
 
-<section class="sec" style="padding-top:clamp(36px,6vh,56px)">
+<section class="shop-head">
   <div class="wrap">
-    <div class="sec-head">
-      <p class="eyebrow">The Shop</p>
-      <h1 class="sec-title" style="font-family:var(--serif)">Order the legend home</h1>
-      <p class="sec-sub">Biryanis and kebabs, ready to order. A few kitchen classics are served in store only — they're listed without a price, as always.</p>
-    </div>
-    <div class="shop-tools">
-      <div class="chips" id="chips">
-        <button class="chip active" data-cat="all">All</button>
-        <button class="chip" data-cat="biryani">Biryani</button>
-        <button class="chip" data-cat="kebabs">Kebabs</button>
-        <button class="chip" data-cat="mains">Mains &amp; Breads</button>
-        <button class="chip" data-cat="desserts">Desserts</button>
-      </div>
-      <input class="searchbox" id="search" type="search" placeholder="Search the menu…" aria-label="Search dishes">
-    </div>
-    <div class="shop-grid" id="shopGrid"></div>
-    <p class="shop-empty" id="shopEmpty">Nothing matches that search — try “biryani” or “kebab”.</p>
+    <p class="eyebrow">The Shop</p>
+    <h1 class="sec-title">The Layer <span class="flame-text">Table</span></h1>
+    <p class="sec-sub">No cards, no grid — the menu laid out in strata, the way it sits in the handi. Peel a row open to see the dish. Some classics are served in store only, listed without a price, as always.</p>
   </div>
 </section>
 
+<div class="wrap shop-layout">
+  <aside class="cat-rail" aria-label="Categories">
+    <p class="rail-title">Jump to a layer</p>
+    <button class="cat-tab active" data-cat="all">All Layers <small>16</small></button>
+    <button class="cat-tab" data-cat="biryani">Biryani <small>5</small></button>
+    <button class="cat-tab" data-cat="kebabs">Kebabs <small>5</small></button>
+    <button class="cat-tab" data-cat="mains">Mains &amp; Breads <small>4</small></button>
+    <button class="cat-tab" data-cat="desserts">Desserts <small>2</small></button>
+    <input class="rail-search" id="search" type="search" placeholder="Search the layers…" aria-label="Search dishes">
+  </aside>
+
+  <main id="shopMain">
+    <p class="shop-empty" id="shopEmpty">Nothing in the handi matches that — try “biryani” or “kebab”.</p>
+  </main>
+</div>
+
 <footer class="sitefoot">
   <div class="wrap">
-    <div class="foot-grid">
-      <div>
-        <a class="brand" href="index.html" style="text-decoration:none;display:flex;align-items:center;gap:11px">
-          <span class="brand-mark">P</span>
-          <span class="brand-text"><span class="brand-name">PARADISE</span><span class="brand-sub">Since 1953 · Secunderabad</span></span>
-        </a>
-        <p>The world's favourite Hyderabadi dum biryani — from a small cinema café in 1953 to a legend of Hyderabad.</p>
-      </div>
-      <nav class="foot-links">
-        <a href="index.html">Home</a><a href="shop.html">Shop</a><a href="order.html">Order</a><a href="cart.html">Cart</a>
-      </nav>
-    </div>
-    <div class="foot-base"><span>Paradise · Secunderabad</span><span>·</span><span>Since 1953</span><span>·</span><span>Open 11 AM – 11 PM</span><span>·</span><span>World's Favourite Biryani</span></div>
+    <div class="foot-word">PARADISE</div>
+    <nav class="foot-links"><a href="index.html">Home</a><a href="shop.html">Shop</a><a href="order.html">Order</a><a href="cart.html">Your Handi</a></nav>
+    <p class="foot-base">Paradise · Secunderabad · Since 1953 · Open 11 AM – 11 PM · World&#8217;s Favourite Biryani</p>
   </div>
 </footer>
 
-<a class="sticky-cartbar" id="stickyBar" href="cart.html"><span id="stickyCount">0 items</span><span>View Cart →</span><span id="stickyTotal">₹0</span></a>
+<a class="sticky-bar" id="stickyBar" href="cart.html"><span id="stickyCount">0 items</span><span>Your Handi →</span><span id="stickyTotal">₹0</span></a>
 
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/ScrollTrigger.min.js"></script>
 <script src="cart.js"></script>
+<script src="handi.js"></script>
 <script src="shop.js"></script>
 </body>
 </html>

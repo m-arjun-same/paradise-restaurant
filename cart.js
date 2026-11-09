@@ -4,37 +4,37 @@
 'use strict';
 
 const PRODUCTS = [
-  { id: 'chicken', name: 'Chicken Dum Biryani', price: 335, img: 'assets/chicken-biryani.jpg', cat: 'biryani', biryani: true, tag: 'Serves 1 · The Original',
+  { id: 'chicken', name: 'Chicken Dum Biryani', price: 335, img: 'assets/chicken-biryani.jpg', cat: 'biryani', layer: '#e9a13b', biryani: true, tag: 'Serves 1 · The Original',
     desc: 'Chicken and basmati rice cooked in layers, flavoured with saffron. Served with raita and mirchi ka salan.' },
-  { id: 'mutton', name: 'Mutton Dum Biryani', price: 369, img: 'assets/mutton-biryani.jpg', cat: 'biryani', biryani: true, tag: 'Serves 1 · Dum Pukht',
+  { id: 'mutton', name: 'Mutton Dum Biryani', price: 369, img: 'assets/mutton-biryani.jpg', cat: 'biryani', layer: '#8a3b1e', biryani: true, tag: 'Serves 1 · Dum Pukht',
     desc: 'Tender mutton layered with basmati and saffron, sealed and slow-cooked on dum. Served with raita and mirchi ka salan.' },
-  { id: 'special', name: 'Special Biryani', price: 860, img: 'assets/special-biryani.jpg', cat: 'biryani', biryani: true, tag: 'Serves 2 · For Sharing',
+  { id: 'special', name: 'Special Biryani', price: 860, img: 'assets/special-biryani.jpg', cat: 'biryani', layer: '#c2571f', biryani: true, tag: 'Serves 2 · For Sharing',
     desc: 'A rare combination of chicken and lamb with saffron, layered over basmati. Served with raita and mirchi ka salan.' },
-  { id: 'veg', name: 'Veg Dum Biryani', price: 224, img: 'assets/veg-biryani.jpg', cat: 'biryani', biryani: true, tag: 'Serves 1 · Vegetarian',
+  { id: 'veg', name: 'Veg Dum Biryani', price: 224, img: 'assets/veg-biryani.jpg', cat: 'biryani', layer: '#5f8f4e', biryani: true, tag: 'Serves 1 · Vegetarian',
     desc: 'Fresh vegetables layered with basmati and saffron, sealed and slow-cooked on dum. Served with raita and mirchi ka salan.' },
-  { id: 'egg', name: 'Egg Biryani', price: 224, img: 'assets/egg-biryani.jpg', cat: 'biryani', biryani: true, tag: 'Serves 1',
+  { id: 'egg', name: 'Egg Biryani', price: 224, img: 'assets/egg-biryani.jpg', cat: 'biryani', layer: '#e8c93e', biryani: true, tag: 'Serves 1',
     desc: 'Masala egg layered with basmati and saffron, sealed and slow-cooked on dum. Served with raita and mirchi ka salan.' },
-  { id: 'kebab', name: 'Chicken Tikka Kebab', price: 400, img: 'assets/tikka-kebab.jpg', cat: 'kebabs', biryani: false, tag: '8 Pieces · Tandoor',
+  { id: 'kebab', name: 'Chicken Tikka Kebab', price: 400, img: 'assets/tikka-kebab.jpg', cat: 'kebabs', layer: '#a83c12', biryani: false, tag: '8 Pieces · Tandoor',
     desc: 'Boneless chicken in a yoghurt and chilli marinade, char-grilled over charcoal — smoky, with a whisper of garlic.' },
-  { id: 'tikka-half', name: 'Chicken Tikka Kebab (Half)', price: 185, img: 'assets/tikka-kebab.jpg', cat: 'kebabs', biryani: false, tag: 'Half Portion · Tandoor',
+  { id: 'tikka-half', name: 'Chicken Tikka Kebab (Half)', price: 185, img: 'assets/tikka-kebab.jpg', cat: 'kebabs', layer: '#a83c12', biryani: false, tag: 'Half Portion · Tandoor',
     desc: 'A half portion of the charcoal-grilled tikka kebab.' },
-  { id: 'garlic-kebab', name: 'Chicken Garlic Kebab', price: 400, img: null, cat: 'kebabs', biryani: false, tag: 'Tandoor',
+  { id: 'garlic-kebab', name: 'Chicken Garlic Kebab', price: 400, img: null, cat: 'kebabs', layer: '#b3502a', biryani: false, tag: 'Tandoor',
     desc: 'Boneless chicken kebab with a hint of garlic, finished in the tandoor.' },
-  { id: 'platter', name: 'Spl. Kebab Platter', price: 460, img: null, cat: 'kebabs', biryani: false, tag: 'For Sharing',
+  { id: 'platter', name: 'Spl. Kebab Platter', price: 460, img: null, cat: 'kebabs', layer: '#93350f', biryani: false, tag: 'For Sharing',
     desc: 'An assortment of succulent kebabs from the tandoor.' },
-  { id: 'kalmi', name: 'Chicken Kalmi Kebab', price: null, img: null, cat: 'kebabs', biryani: false, tag: 'Tandoor',
+  { id: 'kalmi', name: 'Chicken Kalmi Kebab', price: null, img: null, cat: 'kebabs', layer: '#b3502a', biryani: false, tag: 'Tandoor',
     desc: 'A Paradise tandoor classic — available in store.' },
-  { id: 'dal-fry', name: 'Dal Fry', price: null, img: null, cat: 'mains', biryani: false, tag: 'Mains',
+  { id: 'dal-fry', name: 'Dal Fry', price: null, img: null, cat: 'mains', layer: '#caa06a', biryani: false, tag: 'Mains',
     desc: 'Yellow dal, tempered and served hot.' },
-  { id: 'butter-chicken', name: 'Butter Chicken', price: null, img: null, cat: 'mains', biryani: false, tag: 'Mains',
+  { id: 'butter-chicken', name: 'Butter Chicken', price: null, img: null, cat: 'mains', layer: '#b3502a', biryani: false, tag: 'Mains',
     desc: 'Chicken in a rich, buttery gravy.' },
-  { id: 'naan', name: 'Naan / Roti', price: null, img: null, cat: 'mains', biryani: false, tag: 'Breads',
+  { id: 'naan', name: 'Naan / Roti', price: null, img: null, cat: 'mains', layer: '#e3cf9f', biryani: false, tag: 'Breads',
     desc: 'Fresh breads from the tandoor.' },
-  { id: 'haleem', name: 'Haleem', price: null, img: null, cat: 'mains', biryani: false, tag: 'Seasonal',
+  { id: 'haleem', name: 'Haleem', price: null, img: null, cat: 'mains', layer: '#7a4a21', biryani: false, tag: 'Seasonal',
     desc: 'Slow-cooked and pounded the traditional way — seasonal only.' },
-  { id: 'double-ka-meetha', name: 'Double ka Meetha', price: null, img: null, cat: 'desserts', biryani: false, tag: 'Dessert',
+  { id: 'double-ka-meetha', name: 'Double ka Meetha', price: null, img: null, cat: 'desserts', layer: '#caa06a', biryani: false, tag: 'Dessert',
     desc: 'The Hyderabadi bread pudding classic.' },
-  { id: 'qubani', name: 'Qubani ka Meetha', price: null, img: null, cat: 'desserts', biryani: false, tag: 'Dessert',
+  { id: 'qubani', name: 'Qubani ka Meetha', price: null, img: null, cat: 'desserts', layer: '#d98a2b', biryani: false, tag: 'Dessert',
     desc: 'Stewed apricots, a Hyderabadi favourite.' },
 ];
 const productById = (id) => PRODUCTS.find((p) => p.id === id) || null;
@@ -83,6 +83,9 @@ const PCart = {
   syncBadges() {
     const n = this.count();
     document.querySelectorAll('[data-cart-count]').forEach((el) => { el.textContent = n; });
+    const pct = n === 0 ? 0 : Math.min(88, 16 + n * 13);
+    document.querySelectorAll('[data-handi-fill]').forEach((el) => { el.style.height = pct + '%'; });
+    document.querySelectorAll('[data-handi-meter]').forEach((el) => { el.classList.toggle('has-items', n > 0); });
   },
 };
 
@@ -100,7 +103,7 @@ function flyToCart(fromRect, imgSrc, targetEl, done) {
   } else {
     clone = document.createElement('div');
     clone.textContent = 'P';
-    clone.style.cssText += 'display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-weight:700;color:#0c0906;background:radial-gradient(circle at 35% 30%,#f3cd7a,#d9a441);border-radius:50%;';
+    clone.style.cssText += 'display:flex;align-items:center;justify-content:center;font-family:Anton,Archivo,sans-serif;color:#120b06;background:radial-gradient(circle at 35% 30%,#ffc95e,#f5a301);border-radius:50%;';
     clone.style.fontSize = (size * 0.4) + 'px';
   }
   clone.style.cssText += 'position:fixed;z-index:200;pointer-events:none;left:' +

@@ -3,103 +3,117 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Cart — Paradise Restaurant | Your Order</title>
-<meta name="description" content="Your Paradise order — review your biryanis and kebabs, choose pickup or delivery, and place the order.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%230c0906' stroke='%23d9a441' stroke-width='2'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='34' font-weight='700' fill='%23d9a441' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css">
+<title>Your Handi — Cart | Paradise Restaurant</title>
+<meta name="description" content="Your handi at Paradise — watch it fill layer by layer, then we seal it for pickup or delivery.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='29' fill='%23120b06' stroke='%23f5a301' stroke-width='3'/%3E%3Ctext x='32' y='44' font-family='Arial Black' font-size='30' fill='%23f5a301' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="handi.css">
 </head>
-<body class="site">
+<body>
 
-<header class="sitenav">
-  <a class="brand" href="index.html">
-    <span class="brand-mark">P</span>
-    <span class="brand-text"><span class="brand-name">PARADISE</span><span class="brand-sub">Since 1953 · Secunderabad</span></span>
+<div class="loader" id="loader"><div class="loader-stamp">PARADISE</div><small>Checking your handi…</small></div>
+
+<header class="hnav">
+  <a class="hbrand" href="index.html">
+    <span class="rotor" data-rotor style="width:46px;height:46px"></span>
+    <span><span class="hbrand-name">PARADISE</span><span class="hbrand-sub">Sealed on dum · Est. 1953</span></span>
   </a>
-  <nav class="navlinks">
+  <nav class="hlinks">
     <a href="index.html">Home</a>
     <a href="shop.html">Shop</a>
     <a href="order.html">Order</a>
-    <a class="cart-link active" href="cart.html" id="navCart">Cart <span class="cart-badge" data-cart-count>0</span></a>
+    <a class="handi-meter" href="cart.html" data-handi-meter aria-label="Your handi — view cart">
+      <span class="hm-pot"><span class="hm-lid"></span><span class="hm-body"><span class="hm-fill" data-handi-fill></span></span></span>
+      <span class="hm-label">Your Handi</span><span class="hm-count" data-cart-count>0</span>
+    </a>
   </nav>
 </header>
 
-<section class="sec" style="padding-top:clamp(36px,6vh,56px)">
+<section class="cart-head-sec">
   <div class="wrap">
-    <div class="sec-head">
-      <p class="eyebrow">Your Order</p>
-      <h1 class="sec-title" style="font-family:var(--serif)">The cart</h1>
-    </div>
-
-    <div id="cartMain">
-      <div class="cart-layout">
-        <div class="panel">
-          <h2>Your items</h2>
-          <div id="cartLines"></div>
-          <p class="cart-empty-page" id="cartEmptyPage">Your plate is empty.<br><a href="shop.html" style="color:var(--gold);font-weight:700">Browse the shop</a> or <a href="order.html" style="color:var(--gold);font-weight:700">open the ordering stage</a>.</p>
-        </div>
-
-        <div class="panel">
-          <h2>Checkout</h2>
-          <div class="mode-toggle" role="group" aria-label="Pickup or delivery">
-            <button id="modePickup" class="active">Pickup</button>
-            <button id="modeDelivery">Delivery</button>
-          </div>
-          <label class="field"><span>Your name</span><input id="custName" type="text" placeholder="Name for the order" autocomplete="name"></label>
-          <div id="deliveryFields" hidden>
-            <label class="field"><span>Delivery address</span><textarea id="custAddress" rows="3" placeholder="House no, street, area, landmark"></textarea></label>
-          </div>
-          <div class="tot-row"><span>Subtotal</span><span id="totSubtotal">₹0</span></div>
-          <div class="tot-row" id="deliveryRow" hidden><span>Delivery</span><span>₹40</span></div>
-          <div class="tot-row grand"><span>Total</span><span id="totGrand">₹0</span></div>
-          <button class="btn btn-gold place-btn" id="placeOrder">Place Order</button>
-          <p class="note-line">Pickup from Paradise, Secunderabad · Orders close 30 minutes before pickup.</p>
-        </div>
-      </div>
-    </div>
-
-    <div id="confirmMain" hidden>
-      <div class="panel" style="max-width:620px;margin:0 auto;text-align:left">
-        <div class="confirm-seal">✓</div>
-        <h2 style="font-family:var(--serif);margin:0 0 6px;font-size:28px">Order confirmed</h2>
-        <p style="color:var(--muted);margin:0">Thank you — the handi is on the dum.</p>
-        <div class="confirm-card">
-          <div class="confirm-row"><span>Receipt no.</span><strong id="cReceipt">PRD-000000</strong></div>
-          <div class="confirm-row"><span id="cWhenLabel">Pickup time</span><strong id="cWhen">—</strong></div>
-          <div class="confirm-row"><span>Mode</span><strong id="cMode">Pickup</strong></div>
-          <div class="confirm-row"><span>Name</span><strong id="cName">—</strong></div>
-          <div class="confirm-row"><span>Total</span><strong id="cTotal">₹0</strong></div>
-        </div>
-        <div id="cItems" style="color:var(--muted);line-height:1.8"></div>
-        <p class="note-line">Orders close 30 minutes before pickup.</p>
-        <a class="btn btn-gold" href="shop.html" style="margin-top:10px">Order More →</a>
-      </div>
-    </div>
-
+    <p class="eyebrow">Your order</p>
+    <h1 class="sec-title">Your <span class="flame-text">Handi</span></h1>
+    <p class="sec-sub">Every plate you add becomes a layer in the pot. When you place the order, we seal it — dough ring, lid, stamp.</p>
   </div>
 </section>
 
+<div class="wrap" id="cartMain">
+  <div class="cart-layout">
+    <aside class="big-handi-panel">
+      <h2>The Pot So Far</h2>
+      <p class="bh-sub">Filled layer by layer, exactly as you ordered it.</p>
+      <div class="bh-wrap" id="bhWrap">
+        <div class="bh-sealring" aria-hidden="true"></div>
+        <div class="bh-lid" aria-hidden="true"></div>
+        <div class="bh-pot" id="bhPot">
+          <div class="bh-empty" id="bhEmpty"><span class="anton">An empty handi</span><span>Add a biryani and watch the first layer land.</span></div>
+        </div>
+      </div>
+      <p class="bh-cap" id="bhCap">0 layers · still hungry</p>
+      <div class="bh-total"><span style="letter-spacing:.14em;font-size:12px;color:var(--cream-faint)">RUNNING TOTAL</span><b id="bhTotal">₹0</b></div>
+    </aside>
+
+    <div>
+      <div class="layer-lines" id="cartLines"></div>
+      <p class="cart-empty-note" id="cartEmptyPage">Your handi is empty.<br><a href="shop.html" style="color:var(--saffron);font-weight:800">Open the Layer Table</a> or <a href="order.html" style="color:var(--saffron);font-weight:800">go inside the handi</a>.</p>
+
+      <div class="checkout-panel">
+        <h2>Seal &amp; Send</h2>
+        <div class="mode-toggle" role="group" aria-label="Pickup or delivery">
+          <button id="modePickup" class="active">Pickup</button>
+          <button id="modeDelivery">Delivery</button>
+        </div>
+        <label class="field"><span>Your name</span><input id="custName" type="text" placeholder="Name for the order" autocomplete="name"></label>
+        <div id="deliveryFields" hidden>
+          <label class="field"><span>Delivery address</span><textarea id="custAddress" rows="3" placeholder="House no, street, area, landmark"></textarea></label>
+        </div>
+        <div class="tot-row"><span>Subtotal</span><span id="totSubtotal">₹0</span></div>
+        <div class="tot-row" id="deliveryRow" hidden><span>Delivery</span><span>₹40</span></div>
+        <div class="tot-row grand"><span>Total</span><span id="totGrand">₹0</span></div>
+        <button class="btn btn-chilli place-btn" id="placeOrder">Place order — seal the handi</button>
+        <p class="note-line">Pickup from Paradise, Secunderabad · Orders close 30 minutes before pickup.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap" id="confirmMain" hidden>
+  <div class="confirm-wrap">
+    <div class="receipt">
+      <span class="receipt-stamp" id="receiptStamp">SEALED · PRD-000000</span>
+      <div class="receipt-row"><span>Receipt no.</span><strong id="cReceipt">PRD-000000</strong></div>
+      <div class="receipt-row"><span id="cWhenLabel">Pickup time</span><strong id="cWhen">—</strong></div>
+      <div class="receipt-row"><span>Mode</span><strong id="cMode">Pickup</strong></div>
+      <div class="receipt-row"><span>Name</span><strong id="cName">—</strong></div>
+      <div class="receipt-row"><span>Total</span><strong id="cTotal">₹0</strong></div>
+      <div class="receipt-items" id="cItems"></div>
+      <p class="note-line">Your handi is sealed and on the dum. Orders close 30 minutes before pickup.</p>
+      <a class="btn btn-flame" href="shop.html" style="margin-top:12px">Start another handi →</a>
+    </div>
+  </div>
+</div>
+
 <footer class="sitefoot">
   <div class="wrap">
-    <div class="foot-grid">
-      <div>
-        <a class="brand" href="index.html" style="text-decoration:none;display:flex;align-items:center;gap:11px">
-          <span class="brand-mark">P</span>
-          <span class="brand-text"><span class="brand-name">PARADISE</span><span class="brand-sub">Since 1953 · Secunderabad</span></span>
-        </a>
-        <p>The world's favourite Hyderabadi dum biryani — from a small cinema café in 1953 to a legend of Hyderabad.</p>
-      </div>
-      <nav class="foot-links">
-        <a href="index.html">Home</a><a href="shop.html">Shop</a><a href="order.html">Order</a><a href="cart.html">Cart</a>
-      </nav>
-    </div>
-    <div class="foot-base"><span>Paradise · Secunderabad</span><span>·</span><span>Since 1953</span><span>·</span><span>Open 11 AM – 11 PM</span><span>·</span><span>World's Favourite Biryani</span></div>
+    <div class="foot-word">PARADISE</div>
+    <nav class="foot-links"><a href="index.html">Home</a><a href="shop.html">Shop</a><a href="order.html">Order</a><a href="cart.html">Your Handi</a></nav>
+    <p class="foot-base">Paradise · Secunderabad · Since 1953 · Open 11 AM – 11 PM · World&#8217;s Favourite Biryani</p>
   </div>
 </footer>
 
+<div class="seal-overlay" id="sealOverlay" aria-hidden="true">
+  <div class="seal-card">
+    <div class="seal-anim-pot">
+      <div class="seal-anim-lid" id="sealAnimLid"></div>
+      <div class="seal-anim-ring" id="sealAnimRing"></div>
+      <div class="seal-anim-body" id="sealAnimBody"></div>
+    </div>
+    <p class="anton" style="font-size:22px;letter-spacing:.14em;color:var(--saffron)">Sealing your handi…</p>
+  </div>
+</div>
+
+<script src="vendor/gsap.min.js"></script>
 <script src="cart.js"></script>
+<script src="handi.js"></script>
 <script src="cartpage.js"></script>
 </body>
 </html>

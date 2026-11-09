@@ -3,134 +3,180 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Paradise Restaurant — World's Favourite Biryani | A Legend Since 1953</title>
-<meta name="description" content="Paradise, Secunderabad — a legend since 1953. The world's favourite Hyderabadi dum biryani. Order online, browse the shop.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%230c0906' stroke='%23d9a441' stroke-width='2'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='34' font-weight='700' fill='%23d9a441' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css">
+<title>Paradise Restaurant — The Sealed Handi | World's Favourite Biryani Since 1953</title>
+<meta name="description" content="Paradise, Secunderabad — sealed on dum since 1953. Break the seal: Hyderabadi dum biryani, layered and slow-cooked in the handi.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='29' fill='%23120b06' stroke='%23f5a301' stroke-width='3'/%3E%3Ctext x='32' y='44' font-family='Arial Black' font-size='30' fill='%23f5a301' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="handi.css">
 </head>
-<body class="site">
+<body>
 
-<header class="sitenav">
-  <a class="brand" href="index.html">
-    <span class="brand-mark">P</span>
-    <span class="brand-text"><span class="brand-name">PARADISE</span><span class="brand-sub">Since 1953 · Secunderabad</span></span>
+<div class="loader" id="loader"><div class="loader-stamp">PARADISE</div><small>Sealing the dum…</small></div>
+
+<header class="hnav">
+  <a class="hbrand" href="index.html">
+    <span class="rotor" data-rotor style="width:46px;height:46px"></span>
+    <span><span class="hbrand-name">PARADISE</span><span class="hbrand-sub">Sealed on dum · Est. 1953</span></span>
   </a>
-  <nav class="navlinks">
+  <nav class="hlinks">
     <a href="index.html" class="active">Home</a>
     <a href="shop.html">Shop</a>
     <a href="order.html">Order</a>
-    <a class="cart-link" href="cart.html" id="navCart">Cart <span class="cart-badge" data-cart-count>0</span></a>
+    <a class="handi-meter" href="cart.html" data-handi-meter aria-label="Your handi — view cart">
+      <span class="hm-pot"><span class="hm-lid"></span><span class="hm-body"><span class="hm-fill" data-handi-fill></span></span></span>
+      <span class="hm-label">Your Handi</span><span class="hm-count" data-cart-count>0</span>
+    </a>
   </nav>
 </header>
 
-<section class="hero-l">
-  <div class="wrap hero-grid">
-    <div>
-      <p class="eyebrow">Secunderabad · Est. 1953</p>
-      <h1 class="hero-word">PARA<em>DISE</em></h1>
-      <p class="hero-tag">World's Favourite Biryani — A Legend Since 1953</p>
-      <p class="hero-copy">Born as a small café beside the Paradise cinema in Secunderabad, Paradise has served authentic Hyderabadi dum biryani for over seventy years — sealed handis, layered basmati, saffron, and patience.</p>
-      <div class="hero-ctas">
-        <a class="btn btn-gold" href="order.html">Order Now →</a>
-        <a class="btn btn-ghost" href="shop.html">Browse Shop</a>
+<!-- ============ BREAK THE SEAL ============ -->
+<section class="hero-seal" id="heroSeal">
+  <div class="hero-words" aria-hidden="true"><span class="w1">PARADISE</span><span class="w2">BIRYANI</span></div>
+
+  <span class="stamp-chip hero-top-stamp">Hyderabadi Dum · Handi No. 01</span>
+
+  <div class="handi-stage" id="handiStage">
+    <div class="handi-food"><img src="assets/chicken-biryani.jpg" alt="Chicken Dum Biryani revealed inside the handi, top-down"></div>
+    <div class="handi-rim" aria-hidden="true"></div>
+    <svg class="seal-svg" viewBox="0 0 200 200" aria-hidden="true">
+      <g id="sealLeft"><path class="seal-arc" d="M 100 8 A 92 92 0 0 0 100 192" /></g>
+      <g id="sealRight"><path class="seal-arc" d="M 100 8 A 92 92 0 0 1 100 192" /></g>
+      <path class="seal-crack" id="sealCrack" d="M 62 6 L 84 22 L 74 40 L 97 55 L 88 76 L 108 92 L 100 112" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100" />
+    </svg>
+    <div class="handi-lid" id="handiLid"><span class="lid-knob"></span><span class="lid-word">PARADISE · DUM</span></div>
+    <canvas class="seal-steam" id="heroSteam" aria-hidden="true"></canvas>
+  </div>
+
+  <div class="hero-under">
+    <div class="hero-before" id="heroBefore">
+      <h1 class="hero-sealed-line">SEALED SINCE <em>1953</em></h1>
+      <p class="hero-sub">Every Paradise biryani is layered in a handi, sealed with dough and slow-cooked on dum — nothing escapes. This one is waiting for you.</p>
+      <button class="btn btn-chilli btn-break" id="breakBtn">✦ Break the seal</button>
+    </div>
+    <div class="hero-after" id="heroAfter">
+      <h1 class="hero-sealed-line">THE DUM IS <em>OPEN</em></h1>
+      <p class="hero-sub">Steam first, then saffron. That is how a Paradise handi has announced itself since the cinema-café days.</p>
+      <div class="hero-dishline">
+        <span class="hd-name">Chicken Dum Biryani</span>
+        <span class="ticket-price"><small>₹</small>335</span>
+        <button class="btn btn-flame" id="heroAdd">Add to handi</button>
+        <a class="btn btn-ghost" href="#layers">Peel the layers ↓</a>
       </div>
-      <div class="hero-stats">
-        <div class="hstat"><b>1953</b><span>Founded</span></div>
-        <div class="hstat"><b>70+ yrs</b><span>On the dum</span></div>
-        <div class="hstat"><b>5</b><span>Hyd. outlets</span></div>
+    </div>
+    <p class="scroll-hint">Scroll — we peel it layer by layer</p>
+  </div>
+</section>
+
+<!-- ============ LAYER-PEEL JOURNEY ============ -->
+<div class="peel-stack" id="layers">
+
+  <section class="layer-scene" data-layer="1" style="background:#221304">
+    <div class="layer-bg"><img src="assets/special-biryani.jpg" alt="" loading="lazy"></div>
+    <span class="layer-idx">01</span><div class="puff" aria-hidden="true"></div>
+    <div class="wrap layer-inner">
+      <span class="layer-kicker" style="background:#f3d98b">Layer 01 · The Crown</span>
+      <h2 class="layer-title">Saffron<br>Rice</h2>
+      <p class="layer-copy">Long-grain basmati, layered by hand and stained gold with saffron. The top of the handi — the first thing the steam kisses when the seal breaks.</p>
+      <div class="layer-bands"><i style="background:#f7ead2"></i><i style="background:#f3d98b"></i><i style="background:#f5a301"></i><i style="background:#e9a13b"></i></div>
+    </div>
+  </section>
+
+  <section class="layer-scene" data-layer="2" style="background:#1d1206">
+    <div class="layer-bg"><img src="assets/veg-biryani.jpg" alt="" loading="lazy"></div>
+    <span class="layer-idx">02</span><div class="puff" aria-hidden="true"></div>
+    <div class="wrap layer-inner">
+      <span class="layer-kicker" style="background:#c97b2f">Layer 02 · The Crunch</span>
+      <h2 class="layer-title">Fried Onion<br>&amp; Mint</h2>
+      <p class="layer-copy">Golden birista — onions fried slow until they shatter — scattered with hand-torn mint between every layer of rice. Sweet, crisp, green.</p>
+      <div class="layer-bands"><i style="background:#c97b2f"></i><i style="background:#a85a1c"></i><i style="background:#5f8f4e"></i><i style="background:#f3d98b"></i></div>
+    </div>
+  </section>
+
+  <section class="layer-scene" data-layer="3" style="background:#200f04">
+    <div class="layer-bg"><img src="assets/mutton-biryani.jpg" alt="" loading="lazy"></div>
+    <span class="layer-idx">03</span><div class="puff" aria-hidden="true"></div>
+    <div class="wrap layer-inner">
+      <span class="layer-kicker" style="background:#ff6b1a">Layer 03 · The Heart</span>
+      <h2 class="layer-title">The<br>Meat</h2>
+      <p class="layer-copy">Chicken or mutton, marinated and resting at the bottom of the handi, where the heat is honest. It cooks in its own juices and perfumes every grain above it.</p>
+      <div class="layer-bands"><i style="background:#8a3b1e"></i><i style="background:#a83c12"></i><i style="background:#d92b1f"></i><i style="background:#f5a301"></i></div>
+    </div>
+  </section>
+
+  <section class="layer-scene fire-scene" data-layer="4">
+    <span class="layer-idx">04</span><div class="puff" aria-hidden="true"></div>
+    <div class="wrap layer-inner">
+      <span class="layer-kicker" style="background:var(--flame-grad)">Layer 04 · The Fire</span>
+      <h2 class="layer-title">Dum Fire<br>&amp; Time</h2>
+      <p class="layer-copy">Sealed handi, low fire, patience. Paradise has cooked this way since a small café beside the Paradise cinema in Secunderabad — here is the fire's own timeline:</p>
+      <div class="tl-tickets">
+        <div class="tl-ticket"><b>1953</b><p>Ghulam Hussain &amp; Hussain Hemati open a 100-seat café in the Paradise cinema theatre, Secunderabad.</p></div>
+        <div class="tl-ticket"><b>1978</b><p>A. Hemati takes complete charge from his father &amp; uncle and renovates for changing times.</p></div>
+        <div class="tl-ticket"><b>1983</b><p>Paradise Persis Family Restaurant and the hugely popular Paradise Takeaway open.</p></div>
+        <div class="tl-ticket"><b>1996</b><p>A major restructuring and modernisation — the legend travels across Hyderabad and beyond.</p></div>
       </div>
     </div>
-    <div class="hero-plate">
-      <img src="assets/chicken-biryani.jpg" alt="Chicken Dum Biryani, top-down on a dark plate, slowly spinning">
+  </section>
+
+  <section class="layer-scene" data-layer="5" style="background:#170d05">
+    <div class="layer-bg"><img src="assets/chicken-biryani.jpg" alt="" loading="lazy"></div>
+    <span class="layer-idx">05</span><div class="puff" aria-hidden="true"></div>
+    <div class="wrap layer-inner">
+      <span class="layer-kicker" style="background:#f5a301">Layer 05 · The Reveal</span>
+      <h2 class="layer-title">Now<br>It&#8217;s Yours</h2>
+      <p class="layer-copy">Six signatures come out of the handi. Pick one below — or go inside the handi and build your order layer by layer.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a class="btn btn-flame" href="order.html">Inside the handi →</a>
+        <a class="btn btn-ghost" href="shop.html">The Layer Table</a>
+      </div>
     </div>
+  </section>
+</div>
+
+<!-- ============ SIGNATURE STRATA ============ -->
+<section class="sec" style="padding-top:clamp(56px,9vh,90px)">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Out of the handi</p>
+      <h2 class="sec-title">Signature <span class="flame-text">Strata</span></h2>
+      <p class="sec-sub">Full-width layers, not cards. Tap a stratum to open that dish inside the handi.</p>
+    </div>
+    <div class="strata-list" id="strataList"></div>
   </div>
 </section>
 
-<div class="marquee" aria-hidden="true"><span class="marquee-track" id="mqTrack"></span></div>
-
-<section class="sec">
+<!-- ============ OUTLETS ============ -->
+<section class="sec" style="padding-top:0">
   <div class="wrap">
-    <div class="sec-head rv">
-      <p class="eyebrow">The Signatures</p>
-      <h2 class="sec-title">Six plates. One handi tradition.</h2>
-      <p class="sec-sub">Tap any plate to open it on the ordering stage — spinning, labelled, ready to fly into your cart.</p>
+    <div class="sec-head">
+      <p class="eyebrow">Find a handi</p>
+      <h2 class="sec-title">Paradise <span class="outline-text">Outlets</span></h2>
+      <p class="sec-sub">Open daily, 11 AM – 11 PM. Flagship hours shown; the dum never waits.</p>
     </div>
-    <div class="sig-grid" id="sigGrid"></div>
-  </div>
-</section>
-
-<section class="sec" style="background:var(--bg2);border-block:1px solid var(--line)">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <p class="eyebrow">Our Story</p>
-      <h2 class="sec-title">From a cinema café to the world's favourite biryani</h2>
-      <p class="sec-sub">Paradise began in September 1953 as a small canteen and café in the Paradise cinema theatre, Secunderabad — a 100-seater serving typical Hyderabadi cuisine, founded by Ghulam Hussain and Hussain Hemati.</p>
+    <div class="ticket-row">
+      <div class="outlet-ticket"><span class="ot-stub">11–11</span><div class="ot-body"><span class="ot-flag">Flagship</span><b>Secunderabad</b><span>Paradise Circle · where it began, 1953</span></div></div>
+      <div class="outlet-ticket"><span class="ot-stub">11–11</span><div class="ot-body"><b>Himayat Nagar</b><span>Hyderabad</span></div></div>
+      <div class="outlet-ticket"><span class="ot-stub">11–11</span><div class="ot-body"><b>Hitech City</b><span>Hyderabad</span></div></div>
+      <div class="outlet-ticket"><span class="ot-stub">11–11</span><div class="ot-body"><b>Begumpet</b><span>Hyderabad</span></div></div>
+      <div class="outlet-ticket"><span class="ot-stub">11–11</span><div class="ot-body"><b>Kukatpally</b><span>Hyderabad</span></div></div>
     </div>
-    <div class="timeline">
-      <div class="tl rv"><b>1953</b><p>The café opens beside Paradise cinema in Secunderabad, serving cinema-goers Hyderabadi biryani and café fare.</p></div>
-      <div class="tl rv"><b>1978</b><p>A. Hemati takes complete charge from his father and uncle, and renovates the restaurant for changing times.</p></div>
-      <div class="tl rv"><b>1983</b><p>Paradise Persis Family Restaurant and the hugely popular Paradise Takeaway open in Secunderabad.</p></div>
-      <div class="tl rv"><b>1996</b><p>A major restructuring and modernisation — Paradise expands, and the legend travels across Hyderabad and beyond.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="sec">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <p class="eyebrow">Dum Pukht</p>
-      <h2 class="sec-title">How the dum works</h2>
-    </div>
-    <div class="steps">
-      <div class="step rv"><div class="num">1</div><h3>Layered by hand</h3><p>Marinated meat and long-grain basmati are layered in the handi with saffron, mint, and golden fried onion.</p></div>
-      <div class="step rv"><div class="num">2</div><h3>Sealed &amp; slow-cooked</h3><p>The handi is sealed and slow-cooked on dum, so the steam cooks the rice in the meat's own aroma — nothing escapes.</p></div>
-      <div class="step rv"><div class="num">3</div><h3>Opened at the table</h3><p>Served straight from the dum with raita and mirchi ka salan, exactly as it has been since the 1960s.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="sec" style="background:var(--bg2);border-top:1px solid var(--line)">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <p class="eyebrow">Visit</p>
-      <h2 class="sec-title">Find a Paradise</h2>
-      <p class="sec-sub">Open daily, 11 AM – 11 PM.</p>
-    </div>
-    <div class="outlets">
-      <div class="outlet rv"><div><b>Secunderabad</b> <span class="flag">Flagship · Paradise Circle</span></div><span>11 AM – 11 PM</span></div>
-      <div class="outlet rv"><div><b>Himayat Nagar</b></div><span>11 AM – 11 PM</span></div>
-      <div class="outlet rv"><div><b>Hitech City</b></div><span>11 AM – 11 PM</span></div>
-      <div class="outlet rv"><div><b>Begumpet</b></div><span>11 AM – 11 PM</span></div>
-      <div class="outlet rv"><div><b>Kukatpally</b></div><span>11 AM – 11 PM</span></div>
-    </div>
-    <div style="margin-top:30px" class="rv"><a class="btn btn-gold" href="order.html">Start an Order →</a></div>
   </div>
 </section>
 
 <footer class="sitefoot">
   <div class="wrap">
-    <div class="foot-grid">
-      <div>
-        <a class="brand" href="index.html" style="text-decoration:none;display:flex;align-items:center;gap:11px">
-          <span class="brand-mark">P</span>
-          <span class="brand-text"><span class="brand-name">PARADISE</span><span class="brand-sub">Since 1953 · Secunderabad</span></span>
-        </a>
-        <p>The world's favourite Hyderabadi dum biryani — from a small cinema café in 1953 to a legend of Hyderabad.</p>
-      </div>
-      <nav class="foot-links">
-        <a href="index.html">Home</a><a href="shop.html">Shop</a><a href="order.html">Order</a><a href="cart.html">Cart</a>
-      </nav>
-    </div>
-    <div class="foot-base"><span>Paradise · Secunderabad</span><span>·</span><span>Since 1953</span><span>·</span><span>Open 11 AM – 11 PM</span><span>·</span><span>World's Favourite Biryani</span></div>
+    <div style="display:flex;justify-content:center;margin-bottom:20px"><span class="rotor" data-rotor style="width:96px;height:96px"></span></div>
+    <div class="foot-word">PARADISE</div>
+    <nav class="foot-links"><a href="index.html">Home</a><a href="shop.html">Shop</a><a href="order.html">Order</a><a href="cart.html">Your Handi</a></nav>
+    <p class="foot-base">Paradise · Secunderabad · Since 1953 · Open 11 AM – 11 PM · World&#8217;s Favourite Biryani</p>
   </div>
 </footer>
 
-<a class="sticky-cartbar" id="stickyBar" href="cart.html"><span id="stickyCount">0 items</span><span>View Cart →</span><span id="stickyTotal">₹0</span></a>
+<a class="sticky-bar" id="stickyBar" href="cart.html"><span id="stickyCount">0 items</span><span>Your Handi →</span><span id="stickyTotal">₹0</span></a>
 
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/ScrollTrigger.min.js"></script>
 <script src="cart.js"></script>
-<script src="landing.js"></script>
+<script src="handi.js"></script>
+<script src="home.js"></script>
 </body>
 </html>
